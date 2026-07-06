@@ -56,7 +56,25 @@ public class LauncherProfiles {
         if(mainProfileJson == null) LauncherProfiles.load();
         String defaultProfileName = LauncherPreferences.DEFAULT_PREF.getString(LauncherPreferences.PREF_KEY_CURRENT_PROFILE, "");
         MinecraftProfile profile = mainProfileJson.profiles.get(defaultProfileName);
-        if(profile == null) throw new RuntimeException("The current profile stopped existing :(");
+        if(profile == null) {
+            // Profil bulunamadi, ilk profili kullan veya yeni olustur
+            if (!mainProfileJson.profiles.isEmpty()) {
+                String firstKey = mainProfileJson.profiles.keySet().iterator().next();
+                LauncherPreferences.DEFAULT_PREF.edit()
+                    .putString(LauncherPreferences.PREF_KEY_CURRENT_PROFILE, firstKey)
+                    .apply();
+                return mainProfileJson.profiles.get(firstKey);
+            }
+            // Hic profil yok, yeni olustur
+            MinecraftProfile newProfile = new MinecraftProfile();
+            newProfile.name = "Default";
+            mainProfileJson.profiles.put("Default", newProfile);
+            LauncherPreferences.DEFAULT_PREF.edit()
+                .putString(LauncherPreferences.PREF_KEY_CURRENT_PROFILE, "Default")
+                .apply();
+            LauncherProfiles.save();
+            return newProfile;
+        }
         return profile;
     }
 
