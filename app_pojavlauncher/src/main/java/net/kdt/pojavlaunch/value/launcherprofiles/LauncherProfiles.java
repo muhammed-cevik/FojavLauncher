@@ -35,6 +35,15 @@ public class LauncherProfiles {
         if (mainProfileJson.profiles.size() == 0)
             mainProfileJson.profiles.put(UUID.randomUUID().toString(), MinecraftProfile.getDefaultProfile());
 
+        // Eger SharedPreferences bossa ilk profili sec
+        String currentProfile = LauncherPreferences.DEFAULT_PREF.getString(LauncherPreferences.PREF_KEY_CURRENT_PROFILE, "");
+        if (currentProfile.isEmpty() || !mainProfileJson.profiles.containsKey(currentProfile)) {
+            String firstKey = mainProfileJson.profiles.keySet().iterator().next();
+            LauncherPreferences.DEFAULT_PREF.edit()
+                .putString(LauncherPreferences.PREF_KEY_CURRENT_PROFILE, firstKey)
+                .apply();
+        }
+
         // Normalize profile names from mod installers
         if(normalizeProfileIds(mainProfileJson)){
             write();
