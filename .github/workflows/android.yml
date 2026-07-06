@@ -24,19 +24,17 @@ jobs:
           cd app_pojavlauncher/libs
           wget -q https://github.com/PojavLauncherTeam/LTW/releases/latest/download/ltw-release.aar
 
-      - name: Get JREs from Amethyst
+      - name: Get JRE 8
         run: |
           mkdir -p app_pojavlauncher/src/main/assets/components/jre
+          wget -q "https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/releases/download/jre8-40df388/jre8-arm64-20220811-release.tar.xz" -O jre8.tar.xz
+          tar -xf jre8.tar.xz -C app_pojavlauncher/src/main/assets/components/jre
+
+      - name: Get JRE 17
+        run: |
           mkdir -p app_pojavlauncher/src/main/assets/components/jre-new
-          mkdir -p app_pojavlauncher/src/main/assets/components/jre-21
-          LATEST=$(curl -s https://api.github.com/repos/AngelAuraMC/Amethyst-Android/releases/latest)
-          JRE8=$(echo "$LATEST" | grep "browser_download_url.*jre8" | cut -d'"' -f4 | head -1)
-          JRE17=$(echo "$LATEST" | grep "browser_download_url.*jre17" | cut -d'"' -f4 | head -1)
-          JRE21=$(echo "$LATEST" | grep "browser_download_url.*jre21" | cut -d'"' -f4 | head -1)
-          if [ -n "$JRE8" ]; then wget -q "$JRE8" -O jre8.tar.xz && tar -xf jre8.tar.xz -C app_pojavlauncher/src/main/assets/components/jre || true; fi
-          if [ -n "$JRE17" ]; then wget -q "$JRE17" -O jre17.tar.xz && tar -xf jre17.tar.xz -C app_pojavlauncher/src/main/assets/components/jre-new || true; fi
-          if [ -n "$JRE21" ]; then wget -q "$JRE21" -O jre21.tar.xz && tar -xf jre21.tar.xz -C app_pojavlauncher/src/main/assets/components/jre-21 || true; fi
-          echo "JRE download completed"
+          wget -q "https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/releases/download/jre17-ca01427/jre17-arm64-20220817-release.tar.xz" -O jre17.tar.xz
+          tar -xf jre17.tar.xz -C app_pojavlauncher/src/main/assets/components/jre-new
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
