@@ -34,9 +34,30 @@ jobs:
           ./gradlew :app_pojavlauncher:assembleDebug --no-daemon
           mv app_pojavlauncher/build/outputs/apk/debug/app_pojavlauncher-debug.apk out/FojavLauncher-debug.apk
 
-      - name: Upload APK
+      - name: Setup Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > keystore.jks
+
+      - name: Build Release APK
+        run: |
+          ./gradlew :app_pojavlauncher:assembleRelease \
+            -Pandroid.injected.signing.store.file=$PWD/keystore.jks \
+            -Pandroid.injected.signing.store.password=${{ secrets.STORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+            -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }} \
+            --no-daemon
+          mv app_pojavlauncher/build/outputs/apk/release/app_pojavlauncher-release.apk out/FojavLauncher-release.apk
+
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: FojavLauncher-APK
+          name: FojavLauncher-Debug
           path: out/FojavLauncher-debug.apk
+          retention-days: 30
+
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: FojavLauncher-Release
+          path: out/FojavLauncher-release.apk
           retention-days: 30
