@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- App name part -->
-    <string name="app_name">PojavLauncher (Android için Minecraft: Java Edition)</string>
+    <string name="app_name">FojavLauncher (Android için Minecraft: Java Edition)</string>
     <string name="app_short_name">PojavLauncher</string>
     <!-- Action bar part -->
     <!-- Languages list part -->
@@ -10,17 +10,17 @@
     <string name="login_online_login_label">Giriş yap</string>
     <!-- Hint -->
     <!-- Warnings -->
-    <string name="warning_remove_account">Bu hesap kaldırılacak!</string>
+    <string name="warning_remove_account">Bu hesap kaldırılacak! Haberin olsun</string>
     <!-- AlertDialog title -->
     <string name="alerttitle_installmod">Bir mod yükleyicisi seç</string>
     <!-- Error messages -->
-    <string name="error_fatal">PojavLauncher beklenmedik bir sebepten dolayı çöktü</string>
-    <string name="error_no_version">Sürüm yok!</string>
+    <string name="error_fatal">PojavLauncher beklenmedik bir sebepten dolayı çöktü özür dileriz</string>
+    <string name="error_no_version">Sürüm bulunamadı/yok!</string>
     <string name="error_show_more">Daha fazla göster</string>
     <string name="error_show_less">Daha az göster</string>
     <!-- Toast messages -->
-    <string name="toast_permission_denied">Depolamaya okuma/yazma izni gerekli!</string>
-    <string name="toast_optifine_success">Yükleme başarılı</string>
+    <string name="toast_permission_denied">Depolamaya okuma ve yazma izni gerekli!</string>
+    <string name="toast_optifine_success">Yükleme başarılı oldu!!</string>
     <!--
     <string name="toast_3">Exit</string>
     -->
@@ -28,16 +28,16 @@
     <string name="mcl_tab_wiki">Wiki</string>
     <!-- MCLauncherActivity: Account status -->
     <!-- MCLauncherActivity: Strings -->
-    <string name="mcl_launch_cleancache">Önbellek dosyaları temizleniyor</string>
+    <string name="mcl_launch_cleancache">Önbellek dosyaları temizleniyor...</string>
     <string name="mcl_launch_downloading">%s indiriliyor</string>
     <string name="mcl_launch_downloading_progress">"%s indiriliyor (%.2f MB / %.2f MB)"</string>
-    <string name="mcl_launch_download_assets">Kaynaklar yüklenmeye hazırlanılıyor</string>
+    <string name="mcl_launch_download_assets">Kaynaklar yüklenmeye hazırlanılıyor...</string>
     <string name="mcl_options">Seçenekler</string>
     <string name="mcl_option_customcontrol">Özel kontroller</string>
     <string name="mcl_setting_title_use_surface_view">Alternatif yüzey işleyicisi kullan</string>
     <string name="mcl_setting_subtitle_use_surface_view">GPU\'ya bağlı durumlarda performansı arttırabilir.</string>
     <string name="mcl_setting_title_ignore_notch">Çentiği görmezden gel</string>
-    <string name="mcl_setting_subtitle_ignore_notch">Çentiği görmezden gelir ve ekranı kameranın yanına genişletir.\nDaha sürükleyici bir deneyim sunar.</string>
+    <string name="mcl_setting_subtitle_ignore_notch">Çentiği görmezden gelir ve ekranı kameranın yanına genişletir.\nDaha güzel bir deneyim sunar,emin ol.</string>
     <string name="mcl_setting_title_resolution_scaler">Çözünürlük Ölçekleyicisi</string>
     <string name="mcl_setting_subtitle_resolution_scaler">Oyun çözünürlüğünü düşürmenizi sağlar. %100 full çözünürlüktür.</string>
     <string name="mcl_setting_title_longpresstrigger">Uzun basma tetiklenme gecikmesi</string>
@@ -287,7 +287,7 @@
     <string name="modpack_download_downloading_mods">Modlar indiriliyor (%.2f MB / %.2f MB)</string>
     <string name="modpack_download_downloading_mods_fc">Modlar indiriliyor (%d dosyadan %d tanesi)</string>
     <string name="modpack_download_applying_overrides">Geçersiz kılmalar uygulanıyor (%d/%d)</string>
-    <string name="modpack_install_notification_title">Pojav Mod Paketi Yükleyicisi</string>
+    <string name="modpack_install_notification_title">Fojav Mod Paketi Yükleyicisi</string>
     <string name="modpack_install_notification_success">Modpack kurulumunu tamamlamak için buraya tıklayın</string>
     <string name="modpack_install_notification_data_not_available">Mod yükleyici bilgileri indirilemedi</string>
     <string name="modpack_install_modloader_download_failed">Mod yükleyici dosyaları indirilemedi</string>
@@ -298,7 +298,7 @@
     <string name="fabric_dl_only_stable">Sadece kararlı sürümleri göster</string>
     <string name="dl_tampered_manifest_title">Dosya doğrulama hatası</string>
     <string name="dl_tampered_manifest"><![CDATA[Aynadaki oyun sürümü bildirimi resmi Mojang sürüm bildirimi ile eşleşmiyor, bu da üzerinde oynanmış olabileceği anlamına geliyor.<br/>
-        <b>Bu güvenli değil. Devam ederseniz kişisel bilgileriniz risk altında olabilir.</b><br/>
+        <b>BU GÜVENLİ DEGİL.EĞER DEVAM EDERSEN VERİLERİN TEHLİKEYE GİREBİLİR!!!!!</b><br/>
         Aynayı kullanmaya devam etmek istiyorsanız, \"Bildirim kontrollerini kapat\" düğmesine basın ve indirmeyi yeniden başlatın.<br/>
         Resmi indirme kaynağını kullanmak istiyorsanız, \"Resmi siteye geç\" düğmesine basın ve indirmeyi yeniden başlatın.<br/>]]></string>
     <string name="dl_turn_off_manifest_checks">Bildirim kontrollerini kapatın</string>
@@ -317,7 +317,7 @@
     <string name="preference_category_miscellaneous">Çeşitli ayarlar</string>
     <string name="preference_category_video">Video ayarları</string>
     <string name="notification_permission_dialog_title">İzin isteği</string>
-    <string name="notification_permission_dialog_text">PojavLauncher, uygulamadan ayrıldığınızda oyun/mod paketi indirmelerinin durmasını önlemek için bildirim gönderme izni gerektirir. Bu izin olmadan, Android PojavLauncher\'ı arka plan moduna aldığınızda indirmelerinizi kapatabilir.</string>
+    <string name="notification_permission_dialog_text">FojavLauncher, uygulamadan ayrıldığınızda oyun/mod paketi indirmelerinin durmasını önlemek için bildirim gönderme izni gerektirir. Bu izin olmadan, Android FojavLauncher\'ı arka plan moduna aldığınızda indirmelerinizi kapatabilir.</string>
     <string name="notification_permission_toast">Fikrinizi daha sonra Ayarlar\'a girerek her zaman değiştirebilirsiniz</string>
     <string name="preference_ask_for_notification_title">Bildirimlere izin ver</string>
     <string name="preference_ask_for_notification_description">Oyun/mod paketi arka plan indirmelerinin düzgün çalışması için gerekli olan bildirim iznini yeniden istemek için tıklayın.</string>
