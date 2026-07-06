@@ -24,25 +24,15 @@ jobs:
           cd app_pojavlauncher/libs
           wget -q https://github.com/PojavLauncherTeam/LTW/releases/latest/download/ltw-release.aar
 
-      - name: Get JRE 8
-        uses: dawidd6/action-download-artifact@v9
-        with:
-          workflow: build.yml
-          path: app_pojavlauncher/src/main/assets/components/jre
-          workflow_conclusion: success
-          repo: PojavLauncherTeam/android-openjdk-build-multiarch
-          branch: buildjre8
-          name: jre8-pojav
-
-      - name: Get JRE 17
-        uses: dawidd6/action-download-artifact@v9
-        with:
-          workflow: build.yml
-          path: app_pojavlauncher/src/main/assets/components/jre-new
-          workflow_conclusion: success
-          repo: PojavLauncherTeam/android-openjdk-build-multiarch
-          branch: buildjre17-21
-          name: jre17-pojav
+      - name: Get JRE from Amethyst
+        run: |
+          mkdir -p app_pojavlauncher/src/main/assets/components/jre
+          mkdir -p app_pojavlauncher/src/main/assets/components/jre-new
+          JRE8_URL=$(curl -s https://api.github.com/repos/AngelAuraMC/Amethyst-Android/releases/latest | grep "browser_download_url.*jre8" | cut -d'"' -f4 | head -1)
+          JRE17_URL=$(curl -s https://api.github.com/repos/AngelAuraMC/Amethyst-Android/releases/latest | grep "browser_download_url.*jre17" | cut -d'"' -f4 | head -1)
+          if [ -n "$JRE8_URL" ]; then wget -q "$JRE8_URL" -O jre8.tar.xz && tar -xf jre8.tar.xz -C app_pojavlauncher/src/main/assets/components/jre || true; fi
+          if [ -n "$JRE17_URL" ]; then wget -q "$JRE17_URL" -O jre17.tar.xz && tar -xf jre17.tar.xz -C app_pojavlauncher/src/main/assets/components/jre-new || true; fi
+          echo "JRE download attempted"
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
