@@ -81,7 +81,7 @@ public class LauncherProfiles {
             LauncherPreferences.DEFAULT_PREF.edit()
                 .putString(LauncherPreferences.PREF_KEY_CURRENT_PROFILE, "Default")
                 .apply();
-            LauncherProfiles.save();
+            LauncherProfiles.write();
             return newProfile;
         }
         return profile;
