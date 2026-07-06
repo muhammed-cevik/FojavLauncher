@@ -24,15 +24,19 @@ jobs:
           cd app_pojavlauncher/libs
           wget -q https://github.com/PojavLauncherTeam/LTW/releases/latest/download/ltw-release.aar
 
-      - name: Get JRE from Amethyst
+      - name: Get JREs from Amethyst
         run: |
           mkdir -p app_pojavlauncher/src/main/assets/components/jre
           mkdir -p app_pojavlauncher/src/main/assets/components/jre-new
-          JRE8_URL=$(curl -s https://api.github.com/repos/AngelAuraMC/Amethyst-Android/releases/latest | grep "browser_download_url.*jre8" | cut -d'"' -f4 | head -1)
-          JRE17_URL=$(curl -s https://api.github.com/repos/AngelAuraMC/Amethyst-Android/releases/latest | grep "browser_download_url.*jre17" | cut -d'"' -f4 | head -1)
-          if [ -n "$JRE8_URL" ]; then wget -q "$JRE8_URL" -O jre8.tar.xz && tar -xf jre8.tar.xz -C app_pojavlauncher/src/main/assets/components/jre || true; fi
-          if [ -n "$JRE17_URL" ]; then wget -q "$JRE17_URL" -O jre17.tar.xz && tar -xf jre17.tar.xz -C app_pojavlauncher/src/main/assets/components/jre-new || true; fi
-          echo "JRE download attempted"
+          mkdir -p app_pojavlauncher/src/main/assets/components/jre-21
+          LATEST=$(curl -s https://api.github.com/repos/AngelAuraMC/Amethyst-Android/releases/latest)
+          JRE8=$(echo "$LATEST" | grep "browser_download_url.*jre8" | cut -d'"' -f4 | head -1)
+          JRE17=$(echo "$LATEST" | grep "browser_download_url.*jre17" | cut -d'"' -f4 | head -1)
+          JRE21=$(echo "$LATEST" | grep "browser_download_url.*jre21" | cut -d'"' -f4 | head -1)
+          if [ -n "$JRE8" ]; then wget -q "$JRE8" -O jre8.tar.xz && tar -xf jre8.tar.xz -C app_pojavlauncher/src/main/assets/components/jre || true; fi
+          if [ -n "$JRE17" ]; then wget -q "$JRE17" -O jre17.tar.xz && tar -xf jre17.tar.xz -C app_pojavlauncher/src/main/assets/components/jre-new || true; fi
+          if [ -n "$JRE21" ]; then wget -q "$JRE21" -O jre21.tar.xz && tar -xf jre21.tar.xz -C app_pojavlauncher/src/main/assets/components/jre-21 || true; fi
+          echo "JRE download completed"
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
