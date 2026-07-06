@@ -6,8 +6,8 @@
     <!-- Action bar part -->
     <!-- Languages list part -->
     <!-- Login strings -->
-    <string name="login_online_username_hint">Kullanıcı Adı</string>
-    <string name="login_online_login_label">Giriş yap</string>
+    <string name="login_online_username_hint">Kullanıcı Adı Girin</string>
+    <string name="login_online_login_label">Giriş yap!</string>
     <!-- Hint -->
     <!-- Warnings -->
     <string name="warning_remove_account">Bu hesap kaldırılacak! Haberin olsun</string>
@@ -47,11 +47,11 @@
     <string name="mcl_setting_title_mousescale">İmleç ölçeklemesi</string>
     <string name="mcl_setting_subtitle_mousescale">Sanal farenin boyutunu ayarlayın.</string>
     <string name="mcl_setting_title_javaargs">JVM Başlatıcı argümanları</string>
-    <string name="mcl_setting_subtitle_javaargs">Dikkatli olun, eğer bilgisizce değiştirilirse oyunun çökmesine sebep olabilir.</string>
+    <string name="mcl_setting_subtitle_javaargs">DİKKATLİ OLUN, eğer bilgisizce değiştirilirse oyunun çökmesine sebep olabilir.</string>
     <string name="mcl_setting_category_renderer">Görüntü İşleyici</string>
-    <string name="mcl_setting_renderer_gles2_4">Holy GL4ES - (bütün sürümler, hızlı)</string>
-    <string name="mcl_setting_renderer_vulkan_zink">Zink (Vulkan) - (tüm sürümler için, orta)</string>
-    <string name="mcl_setting_veroption_release">Sürümler</string>
+    <string name="mcl_setting_renderer_gles2_4">Holy GL4ES - (her sürüm, hızlı)</string>
+    <string name="mcl_setting_renderer_vulkan_zink">Zink (Vulkan) - (tüm sürümler için,orta hızlı)</string>
+    <string name="mcl_setting_veroption_release"> Release Sürümler</string>
     <string name="mcl_setting_veroption_snapshot">Test sürümleri</string>
     <string name="mcl_setting_veroption_oldalpha">Eski-alfa</string>
     <string name="mcl_setting_veroption_oldbeta">Eski-beta</string>
@@ -93,12 +93,12 @@
     <string name="control_listplayers">Tab</string>
     <string name="control_mouse">İmleç</string>
     <string name="control_mouseoff">İmleç: kapalı</string>
-    <string name="control_mouseon">İmleç: açık </string>
+    <string name="control_mouseon">Mouse Açık</string>
     <!-- MainActivity: Menu advanced controls -->
-    <string name="control_forceclose">Kapatmaya zorla</string>
+    <string name="control_forceclose">Kapatmaya zorla TÜM VERİ KAYBEDİLİR!!!</string>
     <string name="control_viewout">Konsol çıktısı</string>
     <string name="control_adebug">Girdi hata ayıklaması</string>
-    <string name="control_customkey">Özel anahtar kodu gönder</string>
+    <string name="control_customkey">Özel anahtar kodu gönder OYUN DONABİLİR!</string>
     <!-- ImportControlActivity Strings -->
     <string name="import_control_label">Kontrolleri içeri aktar</string>
     <string name="import_control_invalid_file">Geçersiz veya bozuk dosya</string>
@@ -138,16 +138,16 @@
     <string name="mcl_disable_gestures_subtitle">Blok kırmak için basılı tutma ve blok koymak için dokunma gibi hareketleri devre dışı bırakır.</string>
     <string name="mcl_disable_swap_hand">El değiştirmek için çift dokunmayı devre dışı bırak</string>
     <string name="mcl_disable_swap_hand_subtitle">İkinci elde değiştirmek için kısayol çubuğu ögesine iki kez dokunmayı devre dışı bırakır.</string>
-    <string name="mcl_setting_title_mousespeed">İmleç Hızı</string>
+    <string name="mcl_setting_title_mousespeed">Mouse Hızı</string>
     <string name="mcl_setting_subtitle_mousespeed">Sanal farenin hızını ayarlar.</string>
     <string name="customctrl_passthru">İmleç geçişi</string>
     <string name="customctrl_swipeable">Kaydırılabilir</string>
     <string name="customctrl_forward_lock">İleri kilit</string>
-    <string name="customctrl_absolute_tracking">Mutlak parmak takibi</string>
-    <string name="memory_warning_msg">Şuanki boş bellek (%d) verilecek bellekten (%d) daha az, bu durum çökmelere sebep olabilir. Eğer oyun çökerse verilen belleği değiştirin.</string>
+    <string name="customctrl_absolute_tracking">Sürekli parmak takibi</string>
+    <string name="memory_warning_msg">DİKKATLİ OLUN!Şuanki boş bellek (%d) verilecek bellekten (%d) daha az, bu durum çökmelere sebep olabilir. Eğer oyun çökerse verilen belleği değiştirin.</string>
     <string name="mcl_memory_allocation">Bellek ayırma</string>
     <string name="mcl_memory_allocation_subtitle">Minecraft\'a ne kadar bellek verileceğini kontrol eder.</string>
-    <string name="multirt_runtime_corrupt">Bozuk Java Runtime</string>
+    <string name="multirt_runtime_corrupt">Bozuk Java Runtime!</string>
     <string name="multirt_runtime_incompatiblearch">Uyumsuz mimari: %s</string>
     <string name="multirt_config_title">Java Runtime\'lar</string>
     <string name="multirt_config_add">Yeni ekle</string>
