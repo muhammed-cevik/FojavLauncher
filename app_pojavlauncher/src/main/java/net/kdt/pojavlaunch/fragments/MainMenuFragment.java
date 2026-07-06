@@ -22,6 +22,10 @@ import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
 import net.kdt.pojavlaunch.prefs.LauncherPreferences;
+import net.kdt.pojavlaunch.PerformanceMode;
+import net.kdt.pojavlaunch.backup.WorldBackupManager;
+import android.app.AlertDialog;
+import java.io.File;
 import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper;
 import net.kdt.pojavlaunch.value.launcherprofiles.LauncherProfiles;
 import net.kdt.pojavlaunch.value.launcherprofiles.MinecraftProfile;
@@ -45,6 +49,8 @@ public class MainMenuFragment extends Fragment {
         Button mInstallJarButton = view.findViewById(R.id.install_jar_button);
         Button mShareLogsButton = view.findViewById(R.id.share_logs_button);
         Button mOpenDirectoryButton = view.findViewById(R.id.open_files_button);
+        Button mPerformanceModeButton = view.findViewById(R.id.performance_mode_button);
+        Button mBackupWorldsButton = view.findViewById(R.id.backup_worlds_button);
 
         ImageButton mEditProfileButton = view.findViewById(R.id.edit_profile_button);
         Button mPlayButton = view.findViewById(R.id.play_button);
@@ -63,6 +69,43 @@ public class MainMenuFragment extends Fragment {
         mPlayButton.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
 
         mShareLogsButton.setOnClickListener((v) -> shareLog(requireContext()));
+
+        mPerformanceModeButton.setOnClickListener(v -> {
+            String[] modes = {
+                getString(R.string.perf_mode_performance),
+                getString(R.string.perf_mode_balanced),
+                getString(R.string.perf_mode_battery)
+            };
+            new AlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.perf_mode_title))
+                .setItems(modes, (dialog, which) -> {
+                    int mode = which == 0 ? PerformanceMode.MODE_PERFORMANCE :
+                               which == 2 ? PerformanceMode.MODE_BATTERY : PerformanceMode.MODE_BALANCED;
+                    PerformanceMode.applyMode(requireContext(), mode);
+                })
+                .show();
+        });
+
+        mBackupWorldsButton.setOnClickListener(v -> {
+            File savesDir = new File(Tools.DIR_GAME_HOME, "saves");
+            File[] worlds = savesDir.listFiles(File::isDirectory);
+            if (worlds == null || worlds.length == 0) {
+                Toast.makeText(requireContext(), getString(R.string.backup_no_worlds), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String[] names = new String[worlds.length];
+            for (int i = 0; i < worlds.length; i++) names[i] = worlds[i].getName();
+            File[] fw = worlds;
+            new AlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.backup_worlds_button))
+                .setItems(names, (dialog, which) -> {
+                    boolean ok = WorldBackupManager.backupWorld(requireContext(), fw[which]);
+                    Toast.makeText(requireContext(),
+                        ok ? getString(R.string.backup_success) : getString(R.string.backup_failed),
+                        Toast.LENGTH_SHORT).show();
+                })
+                .show();
+        });
 
         mOpenDirectoryButton.setOnClickListener((v)-> {
             Tools.switchDemo(Tools.isDemoProfile(v.getContext())); // avoid switching accounts being able to access

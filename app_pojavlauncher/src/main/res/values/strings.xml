@@ -431,4 +431,14 @@
     <string name="bta_installer_nightly_versions">Nightly BTA versions</string>
     <string name="newdl_extracting_native_libraries">Extracting native libraries (%d/%d)</string>
     <string name="toast_not_available_demo">This is not available in demo mode</string>
+
+    <string name="performance_mode_button">Performans Modu</string>
+    <string name="backup_worlds_button">Dunyeleri Yedekle</string>
+    <string name="backup_success">Yedekleme basarili!</string>
+    <string name="backup_failed">Yedekleme basarisiz!</string>
+    <string name="backup_no_worlds">Yedeklenecek dunya bulunamadi!</string>
+    <string name="perf_mode_title">Performans Modu Sec</string>
+    <string name="perf_mode_performance">Hiz Modu</string>
+    <string name="perf_mode_balanced">Dengeli Mod</string>
+    <string name="perf_mode_battery">Pil Tasarrufu</string>
 </resources>
