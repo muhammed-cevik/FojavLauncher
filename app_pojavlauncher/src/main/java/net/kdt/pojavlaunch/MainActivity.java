@@ -201,8 +201,13 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
             String version = getIntent().getStringExtra(INTENT_MINECRAFT_VERSION);
             version = version == null ? minecraftProfile.lastVersionId : version;
 
-            JMinecraftVersionList.Version mVersionInfo = Tools.getVersionInfo(version);
-            isInputStackCall = mVersionInfo.arguments != null;
+            JMinecraftVersionList.Version mVersionInfo = null;
+            try {
+                mVersionInfo = Tools.getVersionInfo(version);
+            } catch (Exception e) {
+                android.util.Log.w("Fojav", "Version not found: " + version + ", will download on launch");
+            }
+            isInputStackCall = mVersionInfo != null && mVersionInfo.arguments != null;
             CallbackBridge.nativeSetUseInputStackQueue(isInputStackCall);
 
             Tools.getDisplayMetrics(this);
