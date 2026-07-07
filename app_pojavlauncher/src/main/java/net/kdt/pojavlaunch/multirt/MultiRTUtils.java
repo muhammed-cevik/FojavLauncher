@@ -38,7 +38,7 @@ public class MultiRTUtils {
 
     public static List<Runtime> getRuntimes() {
         if(!RUNTIME_FOLDER.exists() && !RUNTIME_FOLDER.mkdirs()) {
-            throw new RuntimeException("Failed to create runtime directory");
+            android.util.Log.e("MultiRT", "Failed to create runtime directory"); return;
         }
 
         ArrayList<Runtime> runtimes = new ArrayList<>();
@@ -46,7 +46,7 @@ public class MultiRTUtils {
         if(files != null) for(File f : files) {
             runtimes.add(read(f.getName()));
         }
-        else throw new RuntimeException("The runtime directory does not exist");
+        else { android.util.Log.e("MultiRT", "Runtime directory does not exist"); return; }
 
         return runtimes;
     }
@@ -138,7 +138,7 @@ public class MultiRTUtils {
     public static File getRuntimeHome(String name) {
         File dest = new File(RUNTIME_FOLDER, name);
         Log.i("MiltiRTUitls", "Dest exists? "+dest.exists());
-        if((!dest.exists()) || MultiRTUtils.forceReread(name).versionString == null) throw new RuntimeException("Selected runtime is broken!");
+        if((!dest.exists()) || MultiRTUtils.forceReread(name).versionString == null) { android.util.Log.w("MultiRT", "Runtime broken or missing: " + name); return; }
         return dest;
     }
 

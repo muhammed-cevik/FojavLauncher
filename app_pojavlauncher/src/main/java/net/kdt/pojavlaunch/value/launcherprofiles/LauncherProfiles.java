@@ -25,7 +25,7 @@ public class LauncherProfiles {
                 mainProfileJson = Tools.GLOBAL_GSON.fromJson(Tools.read(launcherProfilesFile.getAbsolutePath()), MinecraftLauncherProfiles.class);
             } catch (IOException e) {
                 Log.e(LauncherProfiles.class.toString(), "Failed to load file: ", e);
-                throw new RuntimeException(e);
+                mainProfileJson = null;
             }
         }
 

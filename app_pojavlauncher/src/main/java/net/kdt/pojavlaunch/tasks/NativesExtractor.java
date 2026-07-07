@@ -53,7 +53,7 @@ public class NativesExtractor {
             case Architecture.ARCH_X86_64:
                 return "x86_64";
         }
-        throw new RuntimeException("Unknown CPU architecture: "+architecture);
+        android.util.Log.e("NativesExtractor", "Unknown CPU architecture: " + architecture); return;
     }
 
     public void extractFromAar(File source) throws IOException {
