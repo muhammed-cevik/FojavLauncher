@@ -102,6 +102,30 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Fojav: ilk acilista gerekli dosyalari olustur
+        try {
+            java.io.File ctrlDir = new java.io.File(net.kdt.pojavlaunch.Tools.CTRLMAP_PATH);
+            if (!ctrlDir.exists()) ctrlDir.mkdirs();
+            java.io.File ctrlFile = new java.io.File(net.kdt.pojavlaunch.Tools.CTRLDEF_FILE);
+            if (!ctrlFile.exists()) {
+                java.io.InputStream is = getAssets().open("controlmap/default.json");
+                java.io.FileOutputStream fos = new java.io.FileOutputStream(ctrlFile);
+                byte[] buf = new byte[4096]; int len;
+                while ((len = is.read(buf)) > 0) fos.write(buf, 0, len);
+                is.close(); fos.close();
+            }
+            java.io.File profilesFile = new java.io.File(net.kdt.pojavlaunch.Tools.GAME_PROFILES_FILE);
+            if (!profilesFile.exists()) {
+                profilesFile.getParentFile().mkdirs();
+                java.io.InputStream is = getAssets().open("launcher_profiles.json");
+                java.io.FileOutputStream fos = new java.io.FileOutputStream(profilesFile);
+                byte[] buf = new byte[4096]; int len;
+                while ((len = is.read(buf)) > 0) fos.write(buf, 0, len);
+                is.close(); fos.close();
+            }
+        } catch (Exception e) {
+            android.util.Log.e("Fojav", "Asset copy error", e);
+        }
         minecraftProfile = LauncherProfiles.getCurrentProfile();
         MCOptionUtils.load(Tools.getGameDirPath(minecraftProfile).getAbsolutePath());
 
